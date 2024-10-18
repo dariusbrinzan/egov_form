@@ -1,0 +1,24 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Order {
+  id          Int     @id @default(autoincrement())
+  amount      Float
+  tax         Float
+  total       Float
+  productName String
+  buyerName   String
+  cnp         String
+  gender      String
+  xmlData     String   @default("")  // Valoare implicită temporară
+  createdAt   DateTime @default(now())
+}
+
