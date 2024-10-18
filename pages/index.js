@@ -2,23 +2,21 @@ import { useState } from 'react';
 
 export default function Home() {
   const [amount, setAmount] = useState(0);
-  const [tax, setTax] = useState(19);  // TVA-ul implicit
+  const [tax, setTax] = useState(19);
   const [total, setTotal] = useState(0);
   const [productName, setProductName] = useState('');
   const [buyerName, setBuyerName] = useState('');
   const [cnp, setCnp] = useState('');
-  const [gender, setGender] = useState('m');  // Valoare implicită 'm' pentru sex
+  const [gender, setGender] = useState('m');
 
-  // Funcție pentru calcularea automată a totalului
   const calculateTotal = () => {
-    const calculatedTotal = parseFloat(amount) + (parseFloat(amount) * (parseFloat(tax) / 100)); // Total = Sumă + TVA
+    const calculatedTotal = parseFloat(amount) + (parseFloat(amount) * (parseFloat(tax) / 100));
     setTotal(isNaN(calculatedTotal) ? 0 : calculatedTotal);
   };
-
-  // Funcție pentru trimiterea formularului
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    calculateTotal(); // Asigură-te că totalul este calculat înainte de trimitere
+    calculateTotal();
 
     const data = {
       amount: parseFloat(amount),
